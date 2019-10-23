@@ -1,12 +1,17 @@
-test('renders no text when `success` prop is false', () => {
+const defaultProps = { success: false };
+
+const setup = (props={}) => {
 	
-const props={ success: false };
+  const setupProps = { ...defaultProps, ...props };
+  
+  return shallow(<Congrats {...setupProps} />)
+}
 
-const wrapper = shallow(<Congrats {...Props} />);
 
-  wrapper.setProps({ foo: 'foo' });
-  
-  expect(wrapper.props().success).to.equal('false');
-  
-  
+test('test with default props', () => {
+  const wrapper = setup();
+});
+	
+test('test when user provides props', () => {
+  const wrapper = setup();
 });
