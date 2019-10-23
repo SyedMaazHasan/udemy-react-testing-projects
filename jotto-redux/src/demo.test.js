@@ -1,10 +1,9 @@
 import React from 'react';
 import  { shallow } from 'enzyme';
-
 import App from './App';
 
-
 test('clicking button increments counter display', () => {
+  
   const counter = 7;
   const wrapper = shallow(<App />);
   wrapper.setState({counter});
