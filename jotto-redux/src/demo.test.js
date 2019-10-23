@@ -1,22 +1,20 @@
-//syntax: checkPropTypes(componentpropTypes ka set,prop which needs tobe checked,'prop', specific prop name which needs to be checked)
+import React from 'react';
+import  { shallow } from 'enzyme';
+import App from './App';
 
-///HelloComponent.js///
 
-import PropTypes from 'prop-types';
+test('clicking button increments counter display', () => {
+    
+  const counter = 7;
+  const wrapper = shallow(<App />);
+  wrapper.setState(state);
 
-const HelloComponent = ({ name }) => <h1>Hi, {name}</h1>;
+  // find button and click
+  const button = wrapper.find(data-test="increment-button"]);
+  button.simulate('click');
 
-HelloComponent.propTypes = {
-	name: PropTypes.string.isRequired
-};
+  // find display and test value
+  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+  expect(counterDisplay.text()).toContain(counter + 1)
 
-///HelloComponent.test.js/////
-
-import checkPropTypes from 'check-prop-types';
-
-test('does not throw warning with expected props', () => {
-	
-	let result = checkPropTypes(HelloComponent.propTypes, { name: 'Julia' }, 'prop', HelloComponent.name);
-	
-	expect(result).toBeUndefined();
 });
