@@ -11,5 +11,5 @@ test('test with default props', () => {
 });
 
 test('test when user provides props', () => {
-	const wrapper = setup();
+	const wrapper = setup({ success: true });
 });
