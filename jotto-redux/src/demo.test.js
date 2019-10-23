@@ -1,20 +1,22 @@
-import React from 'react';
-import  { shallow } from 'enzyme';
-import App from './App';
+class App extends Component {
+	
+    state = {
+      counter: 0
+    };
+	
+  render() {
+    return (
+      <div >
+      <h1 data-test="counter-display">The counter is currently {this.state.counter}</h1>
+      <button
+        data-test="increment-button"
+        onClick={() => this.setState({ counter: this.state.counter + 1 })}
+        >
+        Increment counter
+      </button>
+      </div>
+    );
+  }
+}
 
-
-test('clicking button increments counter display', () => {
-    
-  const counter = 7;
-  const wrapper = shallow(<App />);
-  wrapper.setState(state);
-
-  // find button and click
-  const button = wrapper.find(data-test="increment-button"]);
-  button.simulate('click');
-
-  // find display and test value
-  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
-  expect(counterDisplay.text()).toContain(counter + 1)
-
-});
+export default App;
